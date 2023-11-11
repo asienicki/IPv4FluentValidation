@@ -13,6 +13,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: FluentValidations
 
     steps:
     - uses: actions/checkout@v3
@@ -22,7 +25,10 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       run: dotnet restore
+      working-directory: FluentValidations
     - name: Build
+      working-directory: FluentValidations
       run: dotnet build --no-restore
     - name: Test
+      working-directory: FluentValidations
       run: dotnet test --no-build --verbosity normal
